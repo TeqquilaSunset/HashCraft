@@ -16,11 +16,22 @@ namespace HashCraft
             hashAlgorithm = algorithm;
         }
 
+        /// <summary>
+        /// Генерация хеша без учета соли
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public string ComputeHash(string input)
         {
             return hashAlgorithm.ComputeHash(input);
         }
 
+        /// <summary>
+        /// Генерация хеша с учетом соли
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="salt"></param>
+        /// <returns></returns>
         public string ComputeHashWithSalt(string input, string salt)
         {
             return ComputeHash(ComputeHash(input) + salt);

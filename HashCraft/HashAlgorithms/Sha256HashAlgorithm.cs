@@ -10,6 +10,11 @@ namespace HashCraft.HashAlgorithms
 {
     internal class Sha256HashAlgorithm : IHashAlgorithm
     {
+        /// <summary>
+        /// Вычисление хеша с помощью Sha256
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public string ComputeHash(string input)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -19,6 +24,11 @@ namespace HashCraft.HashAlgorithms
             }
         }
 
+        /// <summary>
+        /// Конвертирует массив байт в строку
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
         private string ConvertBytesToString(byte[] bytes)
         {
             StringBuilder builder = new StringBuilder();
