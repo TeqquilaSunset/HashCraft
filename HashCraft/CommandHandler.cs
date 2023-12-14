@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.Help;
+using System.CommandLine.Invocation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,10 +44,10 @@ namespace HashCraft
             };
             use3Des.SetDefaultValue(false);
 
-            var hash = new Command("hash-craft", "Compute hash with salt");
-            hash.Add(password);
-            hash.Add(salt);
-            hash.Add(use3Des);
+            //var hash = new Command("hash-craft", "Compute hash with salt");
+            //hash.Add(password);
+            //hash.Add(salt);
+            //hash.Add(use3Des);
 
             // Действие выполняемое после получения параметров
             Action<string, string, bool> hashHandler = (password, salt, use3Des) =>
@@ -57,11 +58,15 @@ namespace HashCraft
                 Console.WriteLine(hashedPassword);
             };
 
-            hash.SetHandler(hashHandler, password, salt, use3Des);
+            //hash.SetHandler(hashHandler, password, salt, use3Des);
 
             var root = new RootCommand("A utility for creating a hash with salt");
-            root.Add(hash);
+            root.Add(password);
+            root.Add(salt);
+            root.Add(use3Des);
+            root.SetHandler(hashHandler, password, salt, use3Des);
             await root.InvokeAsync(args);
         }
+
     }
 }
