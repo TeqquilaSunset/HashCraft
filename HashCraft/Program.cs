@@ -8,6 +8,7 @@ using System;
 using System.CommandLine.Invocation;
 using HashCraft.HashAlgorithms;
 
+
 namespace HashCraft;
 
 class Program
