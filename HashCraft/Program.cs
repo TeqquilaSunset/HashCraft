@@ -47,7 +47,7 @@ class Program
         {
             //Инициализация хеш серивса и указание алгоритма хеширования 
             HashService hashService = new HashService(new Sha256HashAlgorithm());
-            string hashedPassword = hashService.ComputeHashWithSalt(password, salt);
+            string hashedPassword = hashService.ComputeHashWithSalt(password, salt, use3Des);
             Console.WriteLine(hashedPassword);
         };
 
