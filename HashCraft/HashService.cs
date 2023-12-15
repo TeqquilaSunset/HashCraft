@@ -32,9 +32,10 @@ namespace HashCraft
         /// <param name="input"></param>
         /// <param name="salt"></param>
         /// <returns></returns>
-        public string ComputeHashWithSalt(string input, string salt)
+        public string ComputeHashWithSalt(string input, string salt, bool use3Des)
         {
             return ComputeHash(ComputeHash(input) + salt);
+            // todo: add TripleDESCrypto
         }
     }
 }
