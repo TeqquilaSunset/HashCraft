@@ -44,11 +44,6 @@ namespace HashCraft
             };
             use3Des.SetDefaultValue(false);
 
-            //var hash = new Command("hash-craft", "Compute hash with salt");
-            //hash.Add(password);
-            //hash.Add(salt);
-            //hash.Add(use3Des);
-
             // Действие выполняемое после получения параметров
             Action<string, string, bool> hashHandler = (password, salt, use3Des) =>
             {
@@ -57,8 +52,6 @@ namespace HashCraft
                 string hashedPassword = hashService.ComputeHashWithSalt(password, salt);
                 Console.WriteLine(hashedPassword);
             };
-
-            //hash.SetHandler(hashHandler, password, salt, use3Des);
 
             var root = new RootCommand("A utility for creating a hash with salt");
             root.Add(password);
