@@ -1,4 +1,5 @@
-﻿using HashCraft.HashAlgorithms;
+﻿using HashCraft.CryptoAlgorithm;
+using HashCraft.HashAlgorithms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace HashCraft
     internal class HashService
     {
         private readonly IHashAlgorithm hashAlgorithm;
+        private readonly ICryptoAlgorithm cryptoAlgorithm;
 
-        public HashService(IHashAlgorithm algorithm)
+        public HashService(IHashAlgorithm algorithm, ICryptoAlgorithm cryptoAlgorithm)
         {
             hashAlgorithm = algorithm;
+            this.cryptoAlgorithm = cryptoAlgorithm;
         }
 
         /// <summary>
@@ -34,8 +37,15 @@ namespace HashCraft
         /// <returns></returns>
         public string ComputeHashWithSalt(string input, string salt, bool use3Des)
         {
-            return ComputeHash(ComputeHash(input) + salt);
-            // todo: add TripleDESCrypto
+            if (use3Des == true)
+            {
+                var hash = ComputeHash(ComputeHash(input) + salt);
+                return cryptoAlgorithm.Encrypt(hash, "YourSecretKey123");
+            }
+            else
+            {
+                return ComputeHash(ComputeHash(input) + salt);
+            }
         }
     }
 }

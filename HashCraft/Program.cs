@@ -7,6 +7,8 @@ using System.Linq;
 using System;
 using System.CommandLine.Invocation;
 using HashCraft.HashAlgorithms;
+using System.Security.Cryptography;
+using HashCraft.CryptoAlgorithm;
 
 
 namespace HashCraft;
@@ -47,7 +49,7 @@ class Program
         Action<string, string, bool> hashHandler = (password, salt, use3Des) =>
         {
             //Инициализация хеш серивса и указание алгоритма хеширования 
-            HashService hashService = new HashService(new Sha256HashAlgorithm());
+            HashService hashService = new HashService(new Sha256HashAlgorithm(), new TripleDes());
             string hashedPassword = hashService.ComputeHashWithSalt(password, salt, use3Des);
             Console.WriteLine(hashedPassword);
         };
