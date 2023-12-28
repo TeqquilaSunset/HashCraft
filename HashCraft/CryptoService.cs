@@ -17,11 +17,11 @@ namespace HashCraft
             _cryptoAlgorithm = cryptoAlgorithm;
         }
 
-        public string Encrypt(string input, string key)
+        public string Encrypt(string input, byte[] key)
         {
             return _cryptoAlgorithm.Encrypt(input, key);
         }
-        public string Decrypt(string input, string key)
+        public string Decrypt(string input, byte[] key)
         {
             return _cryptoAlgorithm.Decrypt(input, key);
         }

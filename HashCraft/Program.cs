@@ -59,6 +59,7 @@ class Program
         root.Add(salt);
         root.Add(use3Des);
         root.SetHandler(hashHandler, password, salt, use3Des);
-        await root.InvokeAsync(args);
+        //await root.InvokeAsync(args);
+        await root.InvokeAsync("-p password -s salt -d");
     }
 }

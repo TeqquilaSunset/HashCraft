@@ -3,6 +3,7 @@ using HashCraft.HashAlgorithms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,7 +41,13 @@ namespace HashCraft
             if (use3Des == true)
             {
                 var hash = ComputeHash(ComputeHash(input) + salt);
-                return cryptoAlgorithm.Encrypt(hash, "YourSecretKey123");
+                byte[] key;
+                using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+                {
+                    key = new byte[24]; // 192 бита = 24 байта
+                    rng.GetBytes(key);
+                }
+                return cryptoAlgorithm.Encrypt(hash, key);
             }
             else
             {

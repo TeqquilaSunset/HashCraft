@@ -8,7 +8,7 @@ namespace HashCraft.CryptoAlgorithm
 {
     internal interface ICryptoAlgorithm
     {
-        public string Encrypt(string input, string key);
-        public string Decrypt(string input, string key);
+        public string Encrypt(string input, byte[] key);
+        public string Decrypt(string input, byte[] key);
     }
 }
